@@ -1,0 +1,166 @@
+/* ========================================
+   1. COULEURS ET REGLAGES GENERAUX
+   ======================================== */
+:root {
+    --background: #f5f6f8;
+    --panel: #ffffff;
+    --text: #152018;
+    --muted: #858b99;
+    --border: #e5e7eb;
+    --primary: #79768f;
+    --primary-hover: #bcb9cf;
+    --primary-light: #efedff;
+    --success: #168454;
+    --shadow: 0 8px 28px rgba(30, 35, 55, 0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    min-height: 100vh;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+/* ========================================
+   2. BARRE DU HAUT ET LOGO
+   ======================================== */
+.topbar {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+/* Le logo est une image directe : on règle .logo, pas .logo img. */
+.logo { display: block; width: auto; height: 58px; max-width: min(44vw, 360px); object-fit: contain; }
+.top-actions { margin-left: auto; display: flex; align-items: center; }
+.theme-button {
+    width: 42px; height: 42px; display: grid; place-items: center;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: var(--panel); color: var(--text); font-size: 20px;
+    transition: transform .2s, background .2s;
+}
+.theme-button:hover { transform: translateY(-2px); }
+
+/* ========================================
+   3. CONTENU PRINCIPAL
+   ======================================== */
+.content { width: min(1200px, calc(100% - 60px)); margin: 0 auto; padding: 36px 0 28px; }
+.page-header { margin-bottom: 25px; }
+.page-header h1 { font-size: clamp(24px, 3vw, 32px); line-height: 1.2; letter-spacing: -.5px; }
+.page-header p { max-width: 680px; margin-top: 8px; color: var(--muted); font-size: 14px; }
+.request-layout { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 20px; align-items: start; }
+.form-card, .info-card, .trust-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+.form-card { padding: 26px; min-width: 0; }
+.card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+.step-circle { width: 30px; height: 30px; flex: 0 0 30px; display: grid; place-items: center; border-radius: 50%; background: var(--primary-light); color: var(--primary); font-weight: 700; }
+.card-header h2 { font-size: 16px; line-height: 1.4; }
+.card-header p { margin-top: 4px; color: var(--muted); font-size: 12px; }
+
+/* ========================================
+   4. CHAMPS DU FORMULAIRE
+   ======================================== */
+.form-group { min-width: 0; margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 650; }
+.form-group label span { color: #d94352; }
+.form-group input, .form-group select, .form-group textarea {
+    display: block; width: 100%; min-height: 44px; padding: 11px 12px;
+    border: 1px solid var(--border); border-radius: 7px;
+    background: var(--panel); color: var(--text); font-size: 13px; outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+.form-group textarea { min-height: 125px; resize: vertical; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--primary); box-shadow: 0 0 0 3px rgba(103, 87, 217, .12);
+}
+.form-group small { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
+.form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.divider { height: 1px; margin: 28px 0; background: var(--border); }
+
+/* ========================================
+   5. AJOUT DE PHOTOS
+   ======================================== */
+.upload { display: flex; align-items: center; gap: 13px; padding: 15px; border: 1px dashed #cfd3dc; border-radius: 9px; }
+.upload-icon { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 9px; background: var(--primary-light); font-size: 21px; }
+.upload-text { min-width: 0; }
+.upload-text strong { display: block; font-size: 13px; }
+.upload-text p { margin-top: 3px; color: var(--muted); font-size: 11px; }
+.secondary-button { margin-left: auto; padding: 9px 13px; border: 1px solid var(--border); border-radius: 7px; background: var(--panel); color: var(--text); font-size: 12px; white-space: nowrap; }
+.secondary-button:hover { border-color: var(--primary); }
+.photo-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.photo-name { padding: 6px 9px; border-radius: 6px; background: var(--primary-light); color: var(--text); font-size: 11px; overflow-wrap: anywhere; }
+
+/* ========================================
+   6. BOUTON ENVOYER ET MESSAGE
+   ======================================== */
+.form-actions { display: flex; justify-content: flex-end; padding-top: 5px; }
+.submit-button { padding: 12px 18px; border: 0; border-radius: 7px; background: var(--primary); color: #fff; font-size: 13px; font-weight: 650; }
+.submit-button:hover { background: var(--primary-hover); }
+.submit-button span { margin-left: 9px; }
+.form-message { display: none; margin-top: 15px; padding: 12px 14px; border-radius: 8px; font-size: 13px; }
+.form-message.visible { display: block; }
+.form-message.success { background: #e8f7ef; color: #17683f; }
+.form-message.error { background: #fff0f0; color: #a52832; }
+
+/* ========================================
+   7. PANNEAU D'INFORMATION
+   ======================================== */
+.info-column { display: flex; flex-direction: column; gap: 16px; }
+.info-card, .trust-card { padding: 21px; }
+.info-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 10px; background: #fff4d9; font-size: 21px; }
+.info-card h3 { margin-bottom: 20px; font-size: 15px; }
+.info-step { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 16px; }
+.info-step:last-child { margin-bottom: 0; }
+.info-step span { width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border-radius: 50%; background: var(--primary-light); color: var(--primary); font-size: 11px; font-weight: 700; }
+.info-step p, .trust-card p { color: var(--muted); font-size: 12px; }
+.trust-card { display: flex; gap: 12px; background: #f0faf6; border-color: #d6eee3; }
+.trust-icon { width: 30px; height: 30px; flex: 0 0 30px; display: grid; place-items: center; border-radius: 50%; background: #d8f3e5; color: var(--success); font-weight: 800; }
+.trust-card strong { display: block; margin-bottom: 5px; color: #207c55; font-size: 12px; }
+.footer { padding-top: 25px; color: var(--muted); text-align: center; font-size: 11px; }
+
+/* ========================================
+   8. THEME SOMBRE
+   ======================================== */
+body.dark {
+    --background: #15171d; --panel: #272b35; --text: #e7e9ee;
+    --muted: #b7c0d6; --border: #363a47; --primary: #0a6fe4;
+    --primary-hover: #efeef3; --primary-light: #50090900;
+    --shadow: 0 8px 28px rgba(0, 0, 0, .12);
+}
+body.dark .upload { border-color: #454957; }
+body.dark .info-icon { background: #41351e; }
+body.dark .trust-card { background: #1d3028; border-color: #2c493d; }
+body.dark .trust-card strong { color: #7bd1a8; }
+body.dark .trust-card p { color: #a2c0b3; }
+body.dark .trust-icon { background: #244638; }
+body.dark .form-message.success { background: #1d3028; color: #a2e6c2; }
+body.dark .form-message.error { background: #3a2227; color: #ffb8bf; }
+
+/* ========================================
+   9. AFFICHAGE SUR TELEPHONE / TABLETTE
+   ======================================== */
+@media (max-width: 950px) {
+    .request-layout { grid-template-columns: minmax(0, 1fr); }
+    .info-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+    .topbar { min-height: 68px; padding: 10px 15px; }
+    .logo { height: 45px; max-width: 60vw; }
+    .content { width: calc(100% - 28px); padding-top: 25px; }
+    .form-card { padding: 18px; }
+    .form-row, .info-column { grid-template-columns: minmax(0, 1fr); }
+    .upload { flex-wrap: wrap; }
+    .secondary-button { margin-left: 0; }
+}
+@media (max-width: 420px) {
+    .content { width: calc(100% - 20px); }
+    .form-card { padding: 14px; }
+    .upload-text { flex: 1 1 150px; }
+    .form-actions { justify-content: stretch; }
+    .submit-button { width: 100%; }
+}

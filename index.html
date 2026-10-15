@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🇰🇲 comSERVICE</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <!-- Logo : garde LOGO.png dans le même dossier que ce fichier. -->
+        <img src="LOGO.png" alt="Logo comSERVICE" class="logo">
+
+        <div class="top-actions">
+            <!-- Le bouton passe du thème clair au thème sombre. -->
+            <button type="button" class="theme-button" id="themeButton" aria-label="Activer le thème sombre" title="Changer de thème">🌙</button>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="page-header">
+            <h1>De quoi avez-vous besoin ?</h1>
+            <p>Décrivez votre besoin. Notre équipe se chargera de vous trouver un profesionnel disponible .</p>
+        </section>
+
+        <div class="request-layout">
+            <form class="form-card" id="requestForm">
+                <section class="form-section">
+                    <div class="card-header">
+                        <span class="step-circle">1</span>
+                        <div>
+                            <h2>Votre besoin</h2>
+                            <p>Expliquez-nous ce que vous souhaitez faire.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Quel service recherchez-vous ? <span>*</span></label>
+                        <select id="service" name="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option>🔧 Plomberie</option>
+                            <option>⚡ Électricité</option>
+                            <option>❄️ Climatisation</option>
+                            <option>🎨 Peinture</option>
+                            <option>🪚 Menuiserie</option>
+                            <option>🧹 Nettoyage</option>
+                            <option>🔨 Maçonnerie</option>
+                            <option>🛠 Autre réparation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Décrivez votre problème <span>*</span></label>
+                        <textarea id="description" name="description" placeholder="Expliquez-nous ce qui doit être fait…" required></textarea>
+                        <small>Une description précise nous aide à mieux comprendre votre besoin.</small>
+                    </div>
+
+                    <!-- Le vrai champ de fichier est caché et ouvert par le bouton Parcourir. -->
+                    <div class="form-group">
+                        <label for="photos">Ajouter des photos (facultatif)</label>
+                        <div class="upload">
+                            <div class="upload-icon" aria-hidden="true">📸</div>
+                            <div class="upload-text">
+                                <strong>Ajoutez des photos utiles</strong>
+                                <p> pour plus de precision sur le besoin en question</p>
+                            </div>
+                            <button type="button" class="secondary-button" id="browseButton">Parcourir</button>
+                            <input type="file" id="photos" name="photos" accept="image/jpeg,image/png" multiple hidden>
+                        </div>
+                        <div id="photoPreview" class="photo-preview" aria-live="polite"></div>
+                    </div>
+                </section>
+
+                <div class="divider"></div>
+
+                <section class="form-section">
+                    <div class="card-header">
+                        <span class="step-circle">2</span>
+                        <div>
+                            <h2>Où se trouve l'intervention ?</h2>
+                            <p>Indiquez la zone pour nous aider à trouver un professionnel disponible.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Adresse / quartier <span>*</span></label>
+                        <input type="text" id="address" name="address" placeholder="Ex. : Moroni, Mtsangani…" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="when">Quand avez-vous besoin du service ?</label>
+                            <select id="when" name="when">
+                                <option>Dès que possible</option>
+                                <option>Aujourd'hui</option>
+                                <option>Demain</option>
+                                <option>Cette semaine</option>
+                                <option>Je choisirai une date</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgency">Urgence</label>
+                            <select id="urgency" name="urgency">
+                                <option>🟢 Normal</option>
+                                <option>🟠 Urgent</option>
+                                <option>🔴 Très urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="divider"></div>
+
+                <section class="form-section">
+                    <div class="card-header">
+                        <span class="step-circle">3</span>
+                        <div>
+                            <h2>Vos coordonnées</h2>
+                            <p>Pour que notre équipe puisse vous contacter.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Nom complet <span>*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Votre nom" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone <span>*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="+269 …" autocomplete="tel" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail <span>*</span></label>
+                        <input type="email" id="email" name="email" placeholder="exemple@domaine.com" autocomplete="email" required>
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <!-- Le bouton Annuler a été retiré comme demandé. -->
+                    <button type="submit" class="submit-button">Vérifier ma demande <span aria-hidden="true">→</span></button>
+                </div>
+                <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+
+            <aside class="info-column">
+                <section class="info-card">
+                    <div class="info-icon" aria-hidden="true">💡</div>
+                    <h3>Comment ça fonctionne ?</h3>
+                    <div class="info-step"><span>1</span><p>Vous décrivez votre besoin et indiquez vos coordonnées.</p></div>
+                    <div class="info-step"><span>2</span><p>Notre équipe étudie votre demande.</p></div>
+                    <div class="info-step"><span>3</span><p>Nous cherchons un professionnel adapté et disponible.</p></div>
+                    <div class="info-step"><span>4</span><p>Nous vous recontactons pour la suite.</p></div>
+                </section>
+                <section class="trust-card">
+                    <div class="trust-icon" aria-hidden="true">✓</div>
+                    <div>
+                        <strong>Votre demande, étape par étape</strong>
+                        <p>Vérifiez vos informations avant de transmettre votre demande.</p>
+                    </div>
+                </section>
+            </aside>
+        </div>
+        <footer class="footer">© comSERVICE — Tous droits réservés</footer>
+    </main>
+</body>
+</html>
